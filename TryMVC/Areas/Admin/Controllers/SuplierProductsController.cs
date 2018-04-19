@@ -35,5 +35,15 @@ namespace TryMVC.Areas.Admin.Controllers
 
             return View(viewModel);
         }
+
+        public ActionResult Edit(int? id)
+        {
+            return RedirectToAction("Edit", "Products", new { id = id });
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            return RedirectToAction("Delete", "Products", new { id = id });
+        }
     }
 }
