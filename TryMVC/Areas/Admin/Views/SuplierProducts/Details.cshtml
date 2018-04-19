@@ -1,0 +1,90 @@
+﻿@model SuplierProductsViewModel
+
+@{
+    ViewBag.Title = "Suplier Details";
+    var firstProduct = Model.ProductCollection.First();
+}
+
+<h3>Suplier Details</h3>
+<div class="form well">
+    <fieldset>
+        <legend>Categories</legend>
+
+        <div class="control-group">
+            <div class="display-label">
+                <strong>@Html.DisplayNameFor(model => model.Supplier.SupplierID)</strong>
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Supplier.SupplierID)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="display-label">
+                <strong>@Html.DisplayNameFor(model => model.Supplier.CompanyName)</strong>
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Supplier.CompanyName)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="display-label">
+                <strong>@Html.DisplayNameFor(model => model.Supplier.Address)</strong>
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Supplier.Address)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="display-label">
+                <strong>@Html.DisplayNameFor(model => model.Supplier.ContactName)</strong>
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Supplier.ContactName)
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<h3>Supplier's Products</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => firstProduct.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => firstProduct.QuantityPerUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => firstProduct.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => firstProduct.UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => firstProduct.Categories.CategoryName)
+        </th>
+    </tr>
+    @foreach (var item in Model.ProductCollection)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categories.CategoryName)
+            </td>
+        </tr>
+    }
+</table>
