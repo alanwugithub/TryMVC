@@ -205,6 +205,7 @@
     <Compile Include="Models\Invoices.cs">
       <DependentUpon>NorthWind.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\Products.cs" />
     <Compile Include="Models\NorthWind.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
