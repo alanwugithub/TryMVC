@@ -19,21 +19,24 @@ namespace TryMVC.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id = 1)
         {
-            if(id == null)
+            var supplier = db.Suppliers.Find(id);
+
+            if (supplier == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            else
+            { 
+                var viewModel = new SuplierProductsViewModel()
+                {
+                    Supplier = supplier,
+                    ProductCollection = db.Products.Where(x => x.SupplierID == id).ToList()
+                };
 
-            var supplier = db.Suppliers.Find(id);
-            var productCollection = db.Products.Where(x => x.CategoryID == id).ToList();
-
-            var viewModel = new SuplierProductsViewModel();
-            viewModel.Supplier = supplier;
-            viewModel.ProductCollection = productCollection;
-
-            return View(viewModel);
+                return View(viewModel);
+            }
         }
 
         public ActionResult Edit(int? id)
